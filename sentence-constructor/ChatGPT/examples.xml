@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JapaneseTutoringSession>
+    <Title>Japanese Tutoring Session</Title>
+    <Interaction>
+        <Step>
+            <EnglishSentence>I love cheese and anime.</EnglishSentence>
+            <Vocabulary>
+                <Word kanji="愛する" furigana="あいする" meaning="to love (stronger, often romantic)" />
+                <Word kanji="好き" furigana="すき" meaning="to like/love (general preference)" />
+                <Word kanji="アニメ" furigana="アニメ" meaning="anime" />
+                <Word kanji="チーズ" furigana="チーズ" meaning="cheese" />
+            </Vocabulary>
+            <SentenceStructure>
+                <Pattern>[Topic] は [Thing 1] と [Thing 2] が 好きです。</Pattern>
+            </SentenceStructure>
+            <CorrectedSentence>チーズとアニメが好きです。</CorrectedSentence>
+            <Explanation>
+                <Point>愛する is too strong for general hobbies or food. Use 好き instead.</Point>
+                <Point>と is the correct particle for "and" in lists.</Point>
+                <Point>が is needed after nouns with 好き.</Point>
+            </Explanation>
+            <ExampleSentences>
+                <Example>日本の映画と音楽が好きです。 (I like Japanese movies and music.)</Example>
+                <Example>パンとコーヒーが好きです。 (I like bread and coffee.)</Example>
+                <Example>ゲームとマンガが好きです。 (I like games and manga.)</Example>
+            </ExampleSentences>
+            <PracticeChallenge>I like sushi and ramen.</PracticeChallenge>
+        </Step>
+
+        <Step>
+            <StudentAttempt>チーズとアニメが大好きです。</StudentAttempt>
+            <Feedback>✅ Perfect sentence! チーズとアニメが大好きです。 (I really love cheese and anime.)</Feedback>
+            <Explanation>
+                <Point>大好き (だいすき) is stronger than 好き, meaning "really love" or "love a lot."</Point>
+            </Explanation>
+            <ExampleSentences>
+                <Example>チーズもアニメも大好きです。 (I love both cheese and anime.)</Example>
+                <Example>アニメが大好きで、毎日見ています。 (I love anime and watch it every day.)</Example>
+            </ExampleSentences>
+            <PracticeChallenge>I love dogs and cats.</PracticeChallenge>
+        </Step>
+
+        <Step>
+            <StudentAttempt>チーズとすアニメが大好きです。</StudentAttempt>
+            <CorrectedSentence>チーズとアニメが大好きです。</CorrectedSentence>
+            <Explanation>
+                <Point>"すアニメ" is incorrect because the "す" does not belong there.</Point>
+                <Point>アニメ is a standalone word and does not need extra characters before it.</Point>
+                <Point>と (to) is the correct way to list specific things.</Point>
+            </Explanation>
+            <ExampleSentences>
+                <Example>犬と猫が大好きです。 (I love dogs and cats.)</Example>
+                <Example>ピザとパスタが大好きです。 (I love pizza and pasta.)</Example>
+                <Example>日本の音楽と映画が大好きです。 (I love Japanese music and movies.)</Example>
+            </ExampleSentences>
+            <PracticeChallenge>I love coffee and chocolate.</PracticeChallenge>
+        </Step>
+    </Interaction>
+</JapaneseTutoringSession>
