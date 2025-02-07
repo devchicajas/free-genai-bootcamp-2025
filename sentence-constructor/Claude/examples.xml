@@ -1,0 +1,101 @@
+<japaneseLessonReport>
+    <lessonInfo>
+        <topic>Expressing Things You Love</topic>
+        <level>Beginner-Intermediate</level>
+        <date>2025-02-07</date>
+    </lessonInfo>
+
+    <vocabulary>
+        <word>
+            <japanese>チーズ</japanese>
+            <furigana>chiizu</furigana>
+            <meaning>cheese</meaning>
+        </word>
+        <word>
+            <japanese>アニメ</japanese>
+            <furigana>anime</furigana>
+            <meaning>anime</meaning>
+        </word>
+        <word>
+            <japanese>大好き</japanese>
+            <furigana>daisuki</furigana>
+            <meaning>to love/really like</meaning>
+        </word>
+    </vocabulary>
+
+    <grammarPattern>
+        <structure>[Topic は/が] + [Object が] + 大好きです</structure>
+        <example>
+            <japanese>私はチーズとアニメが大好きです。</japanese>
+            <reading>Watashi wa chiizu to anime ga daisuki desu.</reading>
+        </example>
+    </grammarPattern>
+
+    <studentProgress>
+        <attempt number="1">
+            <english>I love cheese and anime</english>
+            <japanese>チーズとアニメが大好きです</japanese>
+            <evaluation>
+                <status>Perfect</status>
+                <notes>
+                    <note>Natural omission of subject</note>
+                    <note>Correct particle usage</note>
+                    <note>Appropriate politeness level</note>
+                </notes>
+            </evaluation>
+        </attempt>
+        <attempt number="2">
+            <japanese>チーズとア</japanese>
+            <evaluation>
+                <status>Incomplete</status>
+                <notes>
+                    <note>Demonstrated knowledge of connector と</note>
+                    <note>Needed completion guidance</note>
+                </notes>
+            </evaluation>
+        </attempt>
+        <attempt number="3">
+            <japanese>チーズとすアニメが大好きです</japanese>
+            <evaluation>
+                <status>Minor Error</status>
+                <notes>
+                    <note>Unnecessary す between と and アニメ</note>
+                    <note>Basic structure understanding shown</note>
+                    <note>Correct particle usage maintained</note>
+                </notes>
+            </evaluation>
+        </attempt>
+    </studentProgress>
+
+    <exampleSentences>
+        <example>
+            <japanese>私は犬と猫が大好きです。</japanese>
+            <meaning>I love dogs and cats</meaning>
+        </example>
+        <example>
+            <japanese>映画と音楽が大好きです。</japanese>
+            <meaning>Movies and music are my favorites</meaning>
+        </example>
+        <example>
+            <japanese>旅行と写真が大好きです。</japanese>
+            <meaning>I love traveling and photography</meaning>
+        </example>
+    </exampleSentences>
+
+    <practiceExercises>
+        <exercise>
+            <instruction>Create sentences about things you love</instruction>
+            <template>[Your name]は_____と_____が大好きです。</template>
+        </exercise>
+        <exercise>
+            <instruction>Express why you love something</instruction>
+            <template>チーズが大好きです。なぜなら、_____からです。</template>
+        </exercise>
+    </practiceExercises>
+
+    <teachingNotes>
+        <note>Subject (私は) can be omitted in casual conversation when clear from context</note>
+        <note>Pattern [Noun]と[Noun]が大好きです is essential for expressing love/strong like for multiple things</note>
+        <note>Keep particle が with 大好き, not を</note>
+    </teachingNotes>
+</japaneseLessonReport>
