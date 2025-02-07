@@ -1,0 +1,51 @@
+<respuesta>
+<tabla_vocabulario>
+<palabra>
+<japonés>大好き</japonés>
+<furigana>だいすき</furigana>
+<significado>Encantar, amar mucho</significado>
+</palabra>
+<palabra>
+<japonés>チーズ</japonés>
+<furigana>チーズ</furigana>
+<significado>Queso</significado>
+</palabra>
+<palabra>
+<japonés>アニメ</japonés>
+<furigana>アニメ</furigana>
+<significado>Anime</significado>
+</palabra>
+</tabla_vocabulario>
+<estructura_oracion>
+<explicacion>
+Tu oración sigue la estructura correcta: [cosa que te gusta] ga daisuki desu.
+</explicacion>
+</estructura_oracion>
+<oracion_corregida>
+<japonés>チーズとアニメが大好きです</japonés>
+</oracion_corregida>
+<explicacion_errores>
+<explicacion>
+La palabra "す" (su) no es necesaria en esta oración. La partícula "と" (to) ya indica la conjunción.
+</explicacion>
+</explicacion_errores>
+<ejemplos_oraciones>
+<ejemplo>
+<japonés>コーヒーと音楽が大好きです</japonés>
+<significado>Me encanta el café y la música</significado>
+</ejemplo>
+<ejemplo>
+<japonés>日本料理とアニメが大好きです</japonés>
+<significado>Me encanta la comida japonesa y el anime</significado>
+</ejemplo>
+<ejemplo>
+<japonés>山と川が大好きです</japonés>
+<significado>Me encantan las montañas y los ríos</significado>
+</ejemplo>
+</ejemplos_oraciones>
+<desafio_practica>
+<explicacion>
+¡Intenta decir "Me gusta leer libros y ver películas" en japonés!
+</explicacion>
+</desafio_practica>
+</respuesta>
