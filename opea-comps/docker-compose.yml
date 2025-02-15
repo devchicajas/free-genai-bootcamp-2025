@@ -1,19 +1,14 @@
-# Copyright (C) 2024 Intel Corporation
-# SPDX-License-Identifier: Apache-2.0
-
+version: '3.8'
 services:
-  ollama-server:
-    image: ollama/ollama
-    container_name: ollama-server
+  ollama:
+    image: ollama/ollama:latest
     ports:
-      - ${LLM_ENDPOINT_PORT:-8008}:11434
-    environment:
-      no_proxy: ${no_proxy}
-      http_proxy: ${http_proxy}
-      https_proxy: ${https_proxy}
-      LLM_MODEL_ID: ${LLM_MODEL_ID}
-      host_ip: ${host_ip}
+      - "8008:11434"
+    restart: unless-stopped
 
-networks:
-  default:
-    driver: bridge
+  mega-service:
+    build: ./mega-service
+    ports:
+      - "8000:8000"
+    depends_on:
+      - ollama

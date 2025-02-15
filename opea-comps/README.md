@@ -1,62 +1,210 @@
-## Running Ollama Third-Party Service
+# OPEA Implementation with Ollama 🚀
 
-### Choosing a Model
+## Quick Navigation 🧭
+- [Introduction](#1-introduction-what-are-we-building)
+- [Setup Guide](#3-setup--installation)
+- [Usage Guide](#4-usage-guide)
+- [Troubleshooting](#5-troubleshooting)
+- [Testing](#6-testing-guide)
+- [Advanced Features](mega-service/README.md)
 
-You can get the model_id that ollama will launch from the [Ollama Library](https://ollama.com/library).
+## 1. Introduction: What Are We Building? 🎯
+We're creating a system that can run AI models locally (on your computer) instead of using cloud services like ChatGPT. Think of it like having your own mini-AI assistant that runs on your machine!
 
-https://ollama.com/library/llama3.2
+## 2. Technical Overview 🔍
 
-eg. LLM_MODEL_ID="llama3.2:1b"
+### 2.1 Components
+#### Docker 📦
+- **What is it?** Think of Docker like a shipping container for software
+- **Why use it?** Makes sure our AI runs the same way on every computer
+- **How we use it:** To run Ollama in a controlled environment
 
-### Getting the Host IP
+#### Ollama 🤖
+- **What is it?** Software that runs AI models locally
+- **Why use it?** Lets us run AI without internet/cloud services
+- **Current model:** Using "Mistral" (a smaller, faster AI model)
 
-#### Linux
-
-Get your IP address
-```sh
-sudo apt install net-tools
-ifconfig
+### 2.2 System Architecture
+```
+┌─────────────────────────────┐
+│        Your Computer        │
+│                             │
+│  ┌─────────────────────┐    │
+│  │   Docker Desktop    │    │
+│  │  ┌─────────────┐   │    │
+│  │  │   Ollama    │   │    │
+│  │  │    (AI)     │   │    │
+│  │  └──────┬──────┘   │    │
+│  │         │          │    │
+│  └─────────┼──────────┘    │
+│            │               │
+│     Port 8008              │
+└────────────┼───────────────┘
+             │
+      Your Commands
 ```
 
-Or you can try this way `$(hostname -I | awk '{print $1}')`
+### 2.3 How It Works
+```
+┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
+│   You    │ → │  Docker  │ → │  Ollama  │ → │   AI     │
+│  (curl)  │    │ (8008)   │    │ (Model)  │    │Response │
+└──────────┘    └──────────┘    └──────────┘    └──────────┘
+```
 
-HOST_IP=$(hostname -I | awk '{print $1}') NO_PROXY=localhost LLM_ENDPOINT_PORT=8008 LLM_MODEL_ID="llama3.2:1b" docker compose up
+## 3. Setup & Installation 🛠️
 
+### 3.1 First Time Setup
+```bash
+# Go to the project folder
+cd opea-comps
 
-### Ollama API
+# Start Docker
+docker compose up
+```
 
-Once the Ollama server is running we can make API calls to the ollama API
-
-https://github.com/ollama/ollama/blob/main/docs/api.md
-
-
-## Download (Pull) a model
-
+### 3.2 Download AI Model
+```bash
+# Download Mistral model
 curl http://localhost:8008/api/pull -d '{
-  "model": "llama3.2:1b"
+  "model": "mistral"
 }'
+```
 
-## Generate a Request
+### 3.3 Configuration
+```yaml
+# docker-compose.yml
+version: '3.8'
+services:
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "8008:11434"
+```
 
+## 4. Usage Guide 🔨
+
+### 4.1 Basic Commands
+```bash
+# Talk to the AI
 curl http://localhost:8008/api/generate -d '{
-  "model": "llama3.2:1b",
-  "prompt": "Why is the sky blue?"
+  "model": "mistral",
+  "prompt": "Hello, how are you?"
 }'
+```
 
-# Technical Uncertainty
+### 4.2 API Endpoints
+1. `/api/pull` - Downloads models
+2. `/api/generate` - Creates AI responses
+3. `/api/tags` - Lists available models
 
-Q Does bridge mode mean we can only accses Ollama API with another model in the docker compose?
+## 5. Troubleshooting 🔧
 
-A No, the host machine will be able to access it
+### 5.1 Common Issues & Solutions
 
-Q: Which port is being mapped 8008->141414
+#### Docker Issues
+```bash
+# Error: Cannot connect to Docker daemon
+# Fix: Start Docker Desktop and wait for it to initialize
 
-In this case 8008 is the port that host machine will access. the other other in the guest port (the port of the service inside container)
+# Error: Port already in use
+# Fix: Find and stop the process using port 8008
+lsof -i :8008
+```
 
-Q: If we pass the LLM_MODEL_Id to the ollama server will it download the model when on start?
+#### Ollama Issues
+```bash
+# Error: Model not found
+# Fix: Pull the model first
+curl http://localhost:8008/api/pull -d '{"model": "mistral"}'
 
-It does not appear so. The ollama CLI might be running multiple APIs so you need to call the /pull api before trying to generat text
+# Error: Generation failed
+# Fix: Restart the service
+docker compose restart
+```
 
-Q: Will the model be downloaded in the container? does that mean the ml model will be deleted when the container stops running?
+### 5.2 Quick Fixes
+```bash
+# Full system reset
+docker compose down
+docker system prune -f
+docker compose up
 
-The model will download into the container, and vanish when the container stop running. You need to mount a local drive and there is probably more work to be done.
+# Check system health
+curl http://localhost:8008/api/version
+```
+
+### 5.3 System Flow
+```
+┌─────────────┐
+│ Start Here  │
+└──────┬──────┘
+       ▼
+┌──────────────┐
+│ Docker       │  ←── If fails: Check Docker Desktop
+└──────┬───────┘
+       ▼
+┌──────────────┐
+│ Pull Model   │  ←── If fails: Check internet
+└──────┬───────┘
+       ▼
+┌──────────────┐
+│ Generate Text│  ←── If fails: Check model loaded
+└──────┬───────┘
+       ▼
+┌──────────────┐
+│  Success!    │
+└──────────────┘
+```
+
+## 6. Testing Guide 🧪
+
+### 6.1 Health Checks
+```bash
+# Version check
+curl http://localhost:8008/api/version
+
+# Model check
+curl http://localhost:8008/api/tags
+```
+
+### 6.2 Full System Test
+```bash
+# Generate response
+curl http://localhost:8008/api/generate -d '{
+  "model": "mistral",
+  "prompt": "Test message"
+}'
+```
+
+## 7. Current Status & Next Steps 🎯
+
+### 7.1 Working Features ✅
+- Docker container setup
+- Ollama integration
+- Basic text generation
+- Model management
+
+### 7.2 In Development 🔄
+- Multiple service orchestration
+- Enhanced error handling
+- Performance optimization
+
+### 7.3 Future Improvements 📋
+- Save models permanently
+- Web interface
+- Better error messages
+- More AI models
+
+## 8. Advanced Features 🌟
+
+### 8.1 Multi-Service Orchestration
+We're implementing a multi-service setup that combines:
+- Ollama LLM service
+- Embedding service
+- Service orchestration
+
+📚 **Detailed Documentation:**
+- [Multi-Service Setup & Configuration](mega-service/README.md#how-it-works)
+- [Architecture Details](mega-service/README.md#architecture)
+- [Technical Specifications](mega-service/README.md#technical-details)
