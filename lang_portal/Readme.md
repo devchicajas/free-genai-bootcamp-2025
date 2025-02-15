@@ -83,9 +83,7 @@ http://localhost:5001/test
 ### Watch How It Works! 📺
 Here's me testing out the API:
 
-<video width="640" height="360" controls>
-  <source src="https://github.com/devchicajas/free-genai-bootcamp-2025/blob/af429d35c5f4d71e7e19bfa85aea3c2572233193/docs/videos/apiendpoint.mp4" type="video/mp4">
-</video>
+![API Demo](docs/assets/apiendpoint.gif)
 
 *The test page makes it super easy to try everything out - no complicated API tools needed!*
 
