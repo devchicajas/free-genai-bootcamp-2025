@@ -80,6 +80,13 @@ http://localhost:5001/test
    - Add reviews
    - View words
 
+### Watch How It Works! 📺
+Here's me testing out the API:
+
+https://github.com/devchicajas/free-genai-bootcamp-2025/blob/af429d35c5f4d71e7e19bfa85aea3c2572233193/docs/videos/apiendpoint.mp4
+
+*The test page makes it super easy to try everything out - no complicated API tools needed!*
+
 ## What I Learned 📚
 
 - Built my first Flask API
