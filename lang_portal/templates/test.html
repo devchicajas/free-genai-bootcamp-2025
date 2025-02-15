@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test Page</title>
+    <script>
+        // Function to create a new study session
+        async function createSession() {
+            const response = await fetch('http://localhost:5001/study_sessions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                // Send group_id and study_activity_id to start a new session
+                body: JSON.stringify({
+                    group_id: 1,
+                    study_activity_id: 1
+                })
+            });
+            const data = await response.json();
+            // Display the response in the pre element
+            document.getElementById('sessionResult').textContent = JSON.stringify(data, null, 2);
+        }
+
+        // Function to record a review result
+        async function addReview() {
+            // Get the session ID from the input field
+            const sessionId = document.getElementById('sessionId').value;
+            const response = await fetch(`http://localhost:5001/study_sessions/${sessionId}/review`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                // Send word_id and whether it was correct
+                body: JSON.stringify({
+                    word_id: 1,
+                    correct: true
+                })
+            });
+            const data = await response.json();
+            // Display the response in the pre element
+            document.getElementById('reviewResult').textContent = JSON.stringify(data, null, 2);
+        }
+
+        // Function to get all words in a group
+        async function getWords() {
+            // Simple GET request to fetch words
+            const response = await fetch('http://localhost:5001/groups/1/words/raw');
+            const data = await response.json();
+            // Display the response in the pre element
+            document.getElementById('wordsResult').textContent = JSON.stringify(data, null, 2);
+        }
+    </script>
+</head>
+<body>
+    <h1>API Test Page</h1>
+
+    <!-- Section for creating study sessions -->
+    <div>
+        <h2>Create Study Session</h2>
+        <button onclick="createSession()">Create Session</button>
+        <!-- Results will be displayed here -->
+        <pre id="sessionResult"></pre>
+    </div>
+
+    <!-- Section for adding reviews -->
+    <div>
+        <h2>Add Review</h2>
+        <!-- Input for session ID (needed to know which session to add review to) -->
+        <input type="number" id="sessionId" placeholder="Enter session ID">
+        <button onclick="addReview()">Add Review</button>
+        <!-- Results will be displayed here -->
+        <pre id="reviewResult"></pre>
+    </div>
+
+    <!-- Section for viewing words -->
+    <div>
+        <h2>Get Words</h2>
+        <button onclick="getWords()">Get Words</button>
+        <!-- Results will be displayed here -->
+        <pre id="wordsResult"></pre>
+    </div>
+</body>
+</html> 
